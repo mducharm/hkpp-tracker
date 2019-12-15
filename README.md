@@ -1,19 +1,7 @@
 # hkpp-tracker
 
-## Project setup
-```
-npm install
-```
+This app was created for individuals suffering from hyperkalemic periodic paralysis (HKPP). HKPP is a muscle disorder characterized attacks of muscle weakness or paralysis caused by excessive potassium levels. Due to the complexity of triggers that can lead to an attack, it can be difficult to isolate and understand causes of muscle weakness.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+By aggregating information over time about an individual's attacks, this app provides the user with insight into their HKPP episodes. Users can submit information about their episodes as they happen and can view historical information about their attacks. You can easily view helpful statistics such as most common triggers, frequency of periodic paralysis, and more.
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Find more information about hyperkalemic periodic paralysis [here](https://hkpp.org/patients/hyperkpp-FAQ).
