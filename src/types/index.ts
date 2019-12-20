@@ -1,3 +1,5 @@
+import { openDB, DBSchema } from 'idb';
+
 export interface Intake {
     severity: number;
     duration: number;
@@ -14,3 +16,13 @@ export const triggers = [
     "Excessive potassium",
     "Overexertion"
 ]
+
+export interface IntakeDB extends DBSchema { 
+    'intake-results': {
+        value: Intake,
+        key: string,
+        indexes: {
+            
+        }
+    },
+}
