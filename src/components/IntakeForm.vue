@@ -1,48 +1,64 @@
 <template>
   <v-form v-model="valid">
     <v-container>
-      <v-subheader>Intake Form</v-subheader>
-      <p>Save details of an episode of periodic paralysis using this form.</p>
-      <v-row dense>
+      <v-row justify="center">
         <v-col>
-          <v-card outlined tile class="pa-2">
-            <v-subheader>Severity</v-subheader>
-            <v-radio-group v-model="selectedSeverity" :mandatory="true">
-              <v-radio label="1 - Mild" :value="1"></v-radio>
-              <v-radio label="2" :value="2"></v-radio>
-              <v-radio label="3 - Moderate" :value="3"></v-radio>
-              <v-radio label="4" :value="4"></v-radio>
-              <v-radio label="5 - Severe" :value="5"></v-radio>
-            </v-radio-group>
-          </v-card>
-        </v-col>
-        <v-col>
-          <v-card outlined tile class="pa-2">
-            <v-subheader>Triggers</v-subheader>
-            <v-chip-group
-              multiple
-              column
-              active-class="primary--text"
-              v-model="selectedChipIndexes"
-            >
-              <v-chip v-for="trigger in triggers" :key="trigger">{{ trigger }}</v-chip>
-            </v-chip-group>
-          </v-card>
+          <v-subheader>Intake Form</v-subheader>
+          <p>Save details of an episode of periodic paralysis using this form.</p>
         </v-col>
       </v-row>
-      <v-row dense>
+      <v-row>
         <v-col>
-          <v-card outlined tile class="pa-2">
-            <v-subheader>Duration</v-subheader>
-            <v-text-field v-model="duration" type="number" hide-details single-line suffix="Hours"></v-text-field>
+          <v-card outlined tile class="pa-5">
+            <v-row>
+              <v-col>
+                <div>
+                  <v-subheader>Severity</v-subheader>
+                  <v-radio-group v-model="selectedSeverity" :mandatory="true">
+                    <v-radio label="1 - Mild" :value="1"></v-radio>
+                    <v-radio label="2" :value="2"></v-radio>
+                    <v-radio label="3 - Moderate" :value="3"></v-radio>
+                    <v-radio label="4" :value="4"></v-radio>
+                    <v-radio label="5 - Severe" :value="5"></v-radio>
+                  </v-radio-group>
+                </div>
+              </v-col>
+              <v-col>
+                <div>
+                  <v-subheader>Duration</v-subheader>
+                  <v-text-field
+                    v-model="duration"
+                    type="number"
+                    hide-details
+                    single-line
+                    suffix="Hours"
+                  ></v-text-field>
+                </div>
+                <br>
+                <div>
+                  <v-subheader>Triggers</v-subheader>
+                  <v-chip-group
+                    multiple
+                    column
+                    active-class="primary--text"
+                    v-model="selectedChipIndexes"
+                  >
+                    <v-chip v-for="trigger in triggers" :key="trigger">{{ trigger }}</v-chip>
+                  </v-chip-group>
+                </div>
+              </v-col>
+            </v-row>
           </v-card>
+          
         </v-col>
-        <v-col>
-          <v-card outlined tile class="pa-2">
+        <v-col md="auto">
+          <v-card outlined tile>
             <v-subheader>Date</v-subheader>
             <v-date-picker v-model="datePicker"></v-date-picker>
           </v-card>
         </v-col>
+      </v-row>
+      <v-row dense justify="center">
         <v-col>
           <v-card outlined tile class="pa-2">
             <v-subheader>Notes</v-subheader>
@@ -50,9 +66,9 @@
           </v-card>
         </v-col>
       </v-row>
-      <v-row>
+      <v-row justify="center">
         <v-col>
-          <v-btn @click="submitIntake">Submit</v-btn>
+          <v-btn @click="submitIntake" block="true">Submit</v-btn>
         </v-col>
       </v-row>
     </v-container>
@@ -83,20 +99,20 @@ export default Vue.extend({
         this.selectedChipIndexes.includes(index)
       );
     },
-    intakeResults() : Intake {
+    intakeResults(): Intake {
       return {
         severity: this.$data.selectedSeverity,
         duration: this.$data.duration,
         occuranceDate: this.$data.datePicker,
         triggers: this.selectedTriggers,
-        notes: this.$data.notes,
-      }
+        notes: this.$data.notes
+      };
     }
   },
   methods: {
     submitIntake() {
       console.log(this.intakeResults);
-      
+
       return this.$data.intakeResults;
     }
   }
